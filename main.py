@@ -27,12 +27,8 @@ def output_dir() -> str:
 
 def validate(line: str) -> None:
     """Assert the letter fits the form: one line, 1-140 chars."""
-    if not line:
-        raise ValueError("entry must not be empty")
-    if "\n" in line or "\r" in line:
-        raise ValueError("entry must be a single line")
-    if not 1 <= len(line) <= 140:
-        raise ValueError(f"entry must be 1-140 characters, got {len(line)}")
+    assert 1 <= len(line) <= 140, f"entry must be 1-140 characters, got {len(line)}"
+    assert "\n" not in line and "\r" not in line, "entry must be a single line"
 
 
 def main() -> int:
